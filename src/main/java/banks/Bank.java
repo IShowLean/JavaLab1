@@ -1,18 +1,26 @@
 package banks;
 
-import accountOptions.AccountOption;
-import clients.Client;
+import account.AccountOption;
 import lombok.Data;
 import lombok.NonNull;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+
+/**
+ * Bank class represents bank object.
+ */
 @Data
 public class Bank {
-    @NonNull private String name;
-    private HashMap<Client, AccountOption> clients = new HashMap<Client, AccountOption>();
-    @NonNull private Double maxDepositForUnverifiedUsers;
+    @NonNull String name;
+    private ArrayList<AccountOption> accounts = new ArrayList<AccountOption>();
+    @NonNull Double maxDepositForUnverifiedUsers;
     @NonNull private Double maxWithdrawForUnverifiedUsers;
-    public void registerNewClient(Client client, AccountOption option) {
-        clients.put(client, option);
+
+    /**
+     * Method allows to register new client with his account in a bank system.
+     * @param option - Type of account that belongs to user (Debit, Deposit, Credit).
+     */
+    public void registerNewClient(AccountOption option) {
+        accounts.add(option);
     }
 }
